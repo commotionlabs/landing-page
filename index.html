@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commotion Labs</title>
+    <meta name="description" content="Commotion Labs - Working behind what's next, where solutions to meaningful problems take shape.">
+    <meta name="keywords" content="Commotion Labs, innovation, companies, digital transformation">
+    <meta name="author" content="Commotion Labs">
+    
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:title" content="Commotion Labs">
+    <meta property="og:description" content="Working behind what's next, where solutions to meaningful problems take shape.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://commotionlabs.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="alternate icon" href="/favicon.ico">
+    
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Cormorant:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ============================================
+           RESET & BASE
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #000000;
+            color: #ffffff;
+        }
+
+        /* ============================================
+           MAIN CONTAINER
+           ============================================ */
+        .container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* ============================================
+           HEADER
+           ============================================ */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 48px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .header-cta {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cta-logo {
+            display: none;
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+        }
+
+        .talk-button {
+            font-size: 14px;
+            color: #000000;
+            background: #ffffff;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 12px 28px;
+            border-radius: 6px;
+            transition: opacity 0.2s ease;
+        }
+
+        .talk-button:hover {
+            opacity: 0.85;
+        }
+
+        .cta-tagline {
+            font-size: 12px;
+            color: #666666;
+            font-weight: 400;
+        }
+
+        /* ============================================
+           MAIN CONTENT
+           ============================================ */
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 0 48px;
+            margin-top: -60px; /* Offset header to truly center content */
+        }
+
+        .headline-container {
+            max-width: 800px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .headline {
+            font-size: clamp(48px, 8vw, 84px);
+            font-weight: 800;
+            line-height: 1.1;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+            text-align: left;
+        }
+
+        .headline .italic {
+            font-family: 'Cormorant', Georgia, serif;
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        .headline .regular {
+            font-weight: 400;
+            font-size: clamp(36px, 6vw, 64px);
+            line-height: 1.0;
+            display: block;
+        }
+
+        .tagline {
+            font-size: clamp(16px, 2vw, 20px);
+            font-weight: 400;
+            color: #999999;
+            margin-top: 32px;
+            line-height: 1.6;
+            max-width: 500px;
+        }
+
+        .capability-tags {
+            display: flex;
+            gap: 10px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+
+        .capability-tag {
+            font-size: 10px;
+            color: #000000;
+            background: #ffffff;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 6px 14px;
+            border-radius: 4px;
+        }
+
+        /* ============================================
+           DECORATIVE CIRCLE ELEMENT
+           ============================================ */
+        .decorative-circle {
+            position: absolute;
+            right: 20%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .circle-background {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                #D4B896 0%, 
+                #E6D2B3 10%, 
+                #D4B896 20%, 
+                #E6D2B3 30%, 
+                #D4B896 40%, 
+                #E6D2B3 50%, 
+                #D4B896 60%, 
+                #E6D2B3 70%, 
+                #D4B896 80%, 
+                #E6D2B3 90%, 
+                #D4B896 100%
+            );
+            background-size: 40px 100%;
+            position: relative;
+        }
+
+        .star-burst {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .star {
+            width: 80px;
+            height: 80px;
+            background: #CCFF00;
+            position: relative;
+            transform: rotate(45deg);
+            margin: 10px;
+        }
+
+        .star:before {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: #CCFF00;
+            transform: rotate(45deg);
+            top: 0;
+            left: 0;
+        }
+
+        .star-points {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: -10px;
+            left: -10px;
+        }
+
+        .star-point {
+            position: absolute;
+            width: 3px;
+            height: 30px;
+            background: #CCFF00;
+            border-radius: 1px;
+        }
+
+        .star-point:nth-child(1) { top: 0; left: 50%; transform: translateX(-50%); }
+        .star-point:nth-child(2) { top: 15px; right: 15px; transform: rotate(45deg); }
+        .star-point:nth-child(3) { right: 0; top: 50%; transform: translateY(-50%) rotate(90deg); }
+        .star-point:nth-child(4) { bottom: 15px; right: 15px; transform: rotate(135deg); }
+        .star-point:nth-child(5) { bottom: 0; left: 50%; transform: translateX(-50%) rotate(180deg); }
+        .star-point:nth-child(6) { bottom: 15px; left: 15px; transform: rotate(225deg); }
+        .star-point:nth-child(7) { left: 0; top: 50%; transform: translateY(-50%) rotate(270deg); }
+        .star-point:nth-child(8) { top: 15px; left: 15px; transform: rotate(315deg); }
+
+        /* Additional smaller stars/bursts */
+        .star-burst-2 {
+            position: absolute;
+            top: 25%;
+            right: 25%;
+            width: 40px;
+            height: 40px;
+            background: #CCFF00;
+            transform: rotate(22.5deg);
+            border-radius: 20% 80% 20% 80%;
+        }
+
+        .star-burst-3 {
+            position: absolute;
+            bottom: 25%;
+            left: 25%;
+            width: 25px;
+            height: 25px;
+            background: #CCFF00;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 768px) {
+            .header {
+                padding: 20px 24px;
+                flex-direction: column;
+                gap: 16px;
+                align-items: center;
+            }
+
+            .logo {
+                display: none !important;
+            }
+
+            .cta-logo {
+                display: block !important;
+                order: -1; /* Ensures CL logo appears first */
+                margin-bottom: 8px;
+                font-size: 20px;
+            }
+
+            .header-cta {
+                align-items: center;
+                text-align: center;
+            }
+
+            .main-content {
+                padding: 0 24px;
+                margin-top: -100px; /* Larger offset for stacked mobile header */
+            }
+
+            .headline-container {
+                margin-left: 0;
+            }
+
+            .headline {
+                font-size: clamp(36px, 10vw, 56px);
+                text-align: left;
+            }
+
+            .headline .regular {
+                font-size: clamp(28px, 7vw, 42px);
+            }
+
+            .tagline {
+                margin-top: 24px;
+                font-size: 16px;
+            }
+
+            .capability-tags {
+                margin-top: 20px;
+                gap: 8px;
+            }
+
+            .decorative-circle {
+                width: 250px;
+                height: 250px;
+                right: -50px;
+                opacity: 0.7;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 16px 20px;
+            }
+
+            .main-content {
+                padding: 0 20px;
+            }
+
+            .decorative-circle {
+                width: 200px;
+                height: 200px;
+                right: -80px;
+                opacity: 0.5;
+            }
+        }
+
+        /* ============================================
+           ACCESSIBILITY
+           ============================================ */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        *:focus-visible {
+            outline: 2px solid #CCFF00;
+            outline-offset: 2px;
+        }
+
+        /* Reduce motion for users who prefer it */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to main content for screen readers -->
+    <a href="#main-content" class="sr-only">Skip to main content</a>
+    
+    <div class="container">
+        <header class="header" role="banner">
+            <a href="#" class="logo" aria-label="Commotion Labs">CL</a>
+            
+<div class="header-cta">
+                <span class="cta-logo">CL</span>
+                <a href="#contact" class="talk-button">BRING US A PROBLEM</a>
+                <span class="cta-tagline">solutions designed deliberately</span>
+            </div>
+        </header>
+
+        <main id="main-content" class="main-content" role="main">
+            <div class="headline-container">
+                <h1 class="headline">
+                    <span class="italic">Commotion Labs.</span><br>
+                    <span class="regular">Think through problems. Act on strategies. Provide solutions.</span>
+                </h1>
+                <p class="tagline">Working behind what's next, where solutions to meaningful problems take shape.</p>
+                <div class="capability-tags">
+                    <span class="capability-tag">HARDWARE</span>
+                    <span class="capability-tag">SOFTWARE</span>
+                    <span class="capability-tag">BUSINESS</span>
+                </div>
+            </div>
+
+            <!-- Decorative element removed -->
+        </main>
+    </div>
+</body>
+</html>

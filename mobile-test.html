@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile CSS Test - Commotion Labs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+            background: #000;
+            color: #fff;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .viewport-info {
+            background: #333;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 48px;
+            background: #111;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .header-cta {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cta-logo {
+            display: none;
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+            background: #333;
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 2px solid #CCFF00; /* Debug highlight */
+        }
+
+        .talk-button {
+            font-size: 14px;
+            color: #000000;
+            background: #ffffff;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 12px 28px;
+            border-radius: 6px;
+            transition: opacity 0.2s ease;
+        }
+
+        .cta-tagline {
+            font-size: 12px;
+            color: #666666;
+            font-weight: 400;
+        }
+
+        .status-indicator {
+            background: #222;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .desktop-status { color: #ff6b6b; }
+        .mobile-status { color: #51cf66; }
+
+        /* Mobile styles */
+        @media (max-width: 768px) {
+            .header {
+                padding: 20px 24px;
+                flex-direction: column;
+                gap: 16px;
+                align-items: center;
+            }
+
+            .logo {
+                display: none !important;
+            }
+
+            .cta-logo {
+                display: block !important;
+                order: -1;
+                margin-bottom: 8px;
+                font-size: 20px;
+            }
+
+            .header-cta {
+                align-items: center;
+                text-align: center;
+            }
+
+            .desktop-status {
+                display: none;
+            }
+
+            .mobile-status {
+                display: block;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-status {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="viewport-info">
+            <strong>Viewport Test</strong><br>
+            Current width: <span id="width"></span>px<br>
+            <span id="breakpoint"></span>
+        </div>
+
+        <div class="status-indicator desktop-status">
+            🖥️ <strong>DESKTOP MODE:</strong> Desktop logo (CL) on left, mobile logo hidden
+        </div>
+
+        <div class="status-indicator mobile-status" style="display: none;">
+            📱 <strong>MOBILE MODE:</strong> Desktop logo hidden, mobile logo (CL) appears above button
+        </div>
+
+        <header class="header">
+            <a href="#" class="logo">CL</a>
+            
+            <div class="header-cta">
+                <span class="cta-logo">CL</span>
+                <a href="#contact" class="talk-button">BRING US A PROBLEM</a>
+                <span class="cta-tagline">solutions designed deliberately</span>
+            </div>
+        </header>
+
+        <div style="background: #222; padding: 15px; border-radius: 8px; margin-top: 20px;">
+            <h3>How to test:</h3>
+            <ol>
+                <li>Open this page in a browser</li>
+                <li>Resize the window to less than 768px wide (or use mobile device)</li>
+                <li>The desktop "CL" logo (left side) should disappear</li>
+                <li>The mobile "CL" logo (with green border) should appear above the white button</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        function updateViewport() {
+            const width = window.innerWidth;
+            document.getElementById('width').textContent = width;
+            
+            const breakpointEl = document.getElementById('breakpoint');
+            if (width <= 768) {
+                breakpointEl.textContent = '📱 Mobile breakpoint active';
+                breakpointEl.style.color = '#51cf66';
+            } else {
+                breakpointEl.textContent = '🖥️ Desktop breakpoint active';
+                breakpointEl.style.color = '#ff6b6b';
+            }
+        }
+
+        updateViewport();
+        window.addEventListener('resize', updateViewport);
+    </script>
+</body>
+</html>
